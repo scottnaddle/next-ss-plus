@@ -36,13 +36,14 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       if (!response.ok) {
         let errorMessage = 'Login failed';
         try {
-          const errorData = await response.json();
-          errorMessage = errorData.error || errorMessage;
-        } catch (e) {
-          // 응답이 JSON이 아닐 경우 텍스트로 처리
-          const errorText = await response.text();
-          if (errorText) errorMessage = errorText;
-        }
+          const errorBody = await response.text();
+          try {
+            const errorData = JSON.parse(errorBody);
+            errorMessage = errorData.error || errorMessage;
+          } catch {
+            if (errorBody) errorMessage = errorBody;
+          }
+        } catch {}
         throw new Error(errorMessage);
       }
 
