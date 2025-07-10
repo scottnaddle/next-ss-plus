@@ -13,17 +13,17 @@ A modern web platform for Samsung regional and channel management, including adm
 
 ## Folder Structure
 ```
-next-samsung-plus/
+next-ss-plus/
   backend/           # Node.js/Express backend API
-  next-samsung-plus/ # React frontend (Vite, Tailwind)
+  next-ss-plus/ # React frontend (Vite, Tailwind)
 ```
 
 ## Getting Started
 
 ### 1. Clone the repository
 ```sh
-git clone https://github.com/scottnaddle/next-samsung-plus.git
-cd next-samsung-plus/next-samsung-plus
+git clone https://github.com/scottnaddle/next-ss-plus.git
+cd next-ss-plus/next-ss-plus
 ```
 
 ### 2. Install dependencies (frontend)
@@ -45,3 +45,30 @@ npm run dev
 
 ## License
 MIT 
+
+## Syncing with GitHub Repository
+
+### 1. Check and update remote repository settings
+If a remote repository is already registered, check the address and update it if necessary.
+
+```sh
+git remote -v
+```
+If the existing remote repository (origin) has an old address, change it to the new address with the following command:
+
+```sh
+git remote set-url origin https://github.com/scottnaddle/next-ss-plus.git
+```
+
+### 2. Commit changes
+Commit any changes made (e.g., README.md modifications).
+
+```sh
+git add .
+git commit -m "Folder name and README.md, GitHub address synchronization"
+```
+
+### 3. Push to remote repository
+```sh
+git push origin main
+```
