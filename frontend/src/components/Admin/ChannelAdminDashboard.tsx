@@ -27,7 +27,7 @@ const ChannelAdminDashboard: React.FC = () => {
   useEffect(() => {
     const fetchStores = async () => {
       try {
-        const response = await fetch('http://localhost:3001/api/stores');
+        const response = await fetch('http://211.193.3.87:3001/api/stores');
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }

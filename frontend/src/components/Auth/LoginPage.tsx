@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Smartphone, Eye, EyeOff, AlertCircle } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -8,12 +9,14 @@ const LoginPage: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const { login, isLoading } = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       setError('');
       await login(email, password);
+      navigate('/dashboard');
     } catch (err) {
       setError('Invalid credentials. Please try again.');
     }
@@ -134,7 +137,12 @@ const LoginPage: React.FC = () => {
                   onClick={async () => {
                     setEmail(account.email);
                     setPassword('password');
-                    await login(account.email, 'password');
+                    try {
+                      await login(account.email, 'password');
+                      navigate('/dashboard');
+                    } catch (err) {
+                      setError('Invalid credentials. Please try again.');
+                    }
                   }}
                   className="w-full text-left px-3 py-2 border border-gray-200 rounded-md hover:bg-gray-50 transition-colors"
                 >

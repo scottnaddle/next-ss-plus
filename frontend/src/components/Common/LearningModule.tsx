@@ -30,7 +30,7 @@ const LearningModule: React.FC<LearningModuleProps> = ({ storeSpecific = false }
   useEffect(() => {
     const fetchLearningModules = async () => {
       try {
-        const response = await fetch('http://localhost:3001/api/learning');
+        const response = await fetch('http://211.193.3.87:3001/api/learning');
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
